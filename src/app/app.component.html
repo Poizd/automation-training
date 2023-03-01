@@ -1,0 +1,10 @@
+<div class="h-full flex flex-column p-3">
+  <p-menubar [model]="items">
+    <ng-template pTemplate="start">
+      <img src="/assets/images/cat.png" height="40" class="mr-2" />
+    </ng-template>
+  </p-menubar>
+  <div class="flex-1 overflow-auto">
+    <router-outlet></router-outlet>
+  </div>
+</div>

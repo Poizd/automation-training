@@ -1,0 +1,131 @@
+<div class="wrapper">
+  <h1 class="title" data-cy="title">Posts</h1>
+  <main>
+    <div class="post-creation">
+      <p-button label="Add Post" icon="pi pi-plus" data-cy="add-post-btn" (onClick)="showCreateModal()"></p-button>
+    </div>
+    <div class="posts-wrap">
+      <div *ngIf="posts?.length" class="posts-cnt">
+        <ng-container *ngFor="let post of posts">
+          <p-card [header]="post.title" [attr.data-cy]="'post-' + post.id">
+            <div class="post-body">
+              <span data-cy="post-content">{{ post.body }}. </span>
+              <span class="link" data-cy="post-details" (click)="showDetails(post)">Show details</span>
+            </div>
+            <br />
+            <div class="post-actions flex">
+              <p-button
+                label="Edit"
+                icon="pi pi-pencil"
+                class="ml-auto"
+                styleClass="p-button-sm"
+                data-cy="edit-post-btn"
+                (onClick)="showEditModal(post)"
+              ></p-button>
+              <p-button
+                label="Delete"
+                icon="pi pi-save"
+                class="ml-2"
+                styleClass="p-button-sm p-button-danger"
+                data-cy="delete-post-btn"
+                (onClick)="deletePost(post)"
+              ></p-button>
+            </div>
+          </p-card>
+          <br />
+        </ng-container>
+      </div>
+
+      <div *ngIf="!posts?.length" class="empty-page">There are no posts in the Page. Please refresh.</div>
+
+      <div class="pagination">
+        <p-paginator
+          data-cy="pagination"
+          [rows]="12"
+          [totalRecords]="120"
+          (onPageChange)="onPageChange($event)"
+        ></p-paginator>
+      </div>
+    </div>
+  </main>
+</div>
+
+<p-dialog
+  header="Add Post"
+  data-cy="add-post-modal"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+  [modal]="true"
+  [(visible)]="isShownCreateModal"
+>
+  <br />
+  <span class="p-float-label" data-cy="post-title">
+    <input pInputText id="add-post-title" type="text" class="w-full" [(ngModel)]="createTitle" />
+    <label for="add-post-title">Title</label>
+  </span>
+  <br />
+  <br />
+  <span class="p-float-label" data-cy="post-body">
+    <textarea pInputTextarea id="add-post-body" rows="5" cols="30" class="w-full" [(ngModel)]="createBody"></textarea>
+    <label for="add-post-body">Body</label>
+  </span>
+  <br />
+  <div class="buttons">
+    <p-button
+      label="Cancel"
+      icon="pi"
+      class="mr-auto"
+      styleClass="p-button-secondary"
+      data-cy="hide-modal-btn"
+      (onClick)="hideCreateModal()"
+    ></p-button>
+    <p-button
+      label="Add Post"
+      icon="pi pi-save"
+      class="ml-auto"
+      data-cy="add-post-btn"
+      (onClick)="createPost()"
+    ></p-button>
+  </div>
+</p-dialog>
+
+<p-dialog
+  header="Edit Post"
+  data-cy="edit-post-modal"
+  [style]="{ width: '50vw' }"
+  [draggable]="false"
+  [resizable]="false"
+  [modal]="true"
+  [(visible)]="isShownEditModal"
+>
+  <br />
+  <span class="p-float-label" data-cy="post-title">
+    <input pInputText id="edit-post-title" type="text" class="w-full" [(ngModel)]="editTitle" />
+    <label for="edit-post-title">Title</label>
+  </span>
+  <br />
+  <br />
+  <span class="p-float-label" data-cy="post-body">
+    <textarea pInputTextarea id="edit-post-body" rows="5" cols="30" class="w-full" [(ngModel)]="editBody"></textarea>
+    <label for="edit-post-body">Body</label>
+  </span>
+  <br />
+  <div class="buttons">
+    <p-button
+      label="Cancel"
+      icon="pi"
+      class="mr-auto"
+      styleClass="p-button-secondary"
+      data-cy="hide-modal-btn"
+      (onClick)="hideEditModal()"
+    ></p-button>
+    <p-button
+      label="Update Post"
+      icon="pi pi-save"
+      class="ml-auto"
+      data-cy="update-post-btn"
+      (onClick)="updatePost()"
+    ></p-button>
+  </div>
+</p-dialog>

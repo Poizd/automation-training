@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>XHR</title>
+    <style>
+      .btns-cnt {
+        display: flex;
+        margin: 10px 0;
+      }
+      .status {
+        margin: 30px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Click Me</button>
+    <div class="btns-cnt">
+      <button id="load-async-promise-btn">Load Async Promise</button>
+      <button id="load-async-await-btn" style="margin: 0 10px">Load Async Await</button>
+      <button id="load-sync-btn">Load Sync !</button>
+    </div>
+    <div id="status" class="status"></div>
+
+    <script>
+      const statusEl = document.getElementById('status');
+      const URL = 'https://jsonplaceholder.typicode.com/photos';
+
+      // ==============================================
+
+      function loadAsyncPromise() {
+        statusEl.innerHTML = 'Loading...';
+        fetch(URL).then(() => {
+          statusEl.innerHTML = 'Response received!';
+        });
+      }
+
+      // ==============================================
+
+      async function loadAsyncAwait() {
+        statusEl.innerHTML = 'Loading...';
+        await fetch(URL);
+        statusEl.innerHTML = 'Response received!';
+      }
+
+      // ==============================================
+
+      function loadSync() {
+        statusEl.innerHTML = 'Loading...';
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', URL, false);
+        xhr.send();
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            statusEl.innerHTML = 'Response received!';
+          }
+        };
+      }
+
+      // ==============================================
+
+      const loadAsyncPromiseBtn = document.getElementById('load-async-promise-btn');
+      const loadAsyncAwaitBtn = document.getElementById('load-async-await-btn');
+      const loadSyncBtn = document.getElementById('load-sync-btn');
+
+      loadAsyncPromiseBtn.addEventListener('click', loadAsyncPromise);
+      loadAsyncAwaitBtn.addEventListener('click', loadAsyncAwait);
+      loadSyncBtn.addEventListener('click', loadSync);
+    </script>
+  </body>
+</html>

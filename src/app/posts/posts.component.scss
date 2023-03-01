@@ -1,0 +1,46 @@
+.wrapper {
+  .title {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  main {
+    width: 800px;
+    margin: 0 auto;
+  }
+
+  .post-creation {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .posts-wrap {
+    margin: 20px 0;
+  }
+
+  .posts-cnt {
+    height: calc(100vh - 300px);
+  }
+
+  .empty-page {
+    font-size: 16px;
+    color: #ccc;
+    height: calc(100vh - 300px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .link {
+    text-decoration: underline;
+    cursor: pointer;
+
+    :hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+}

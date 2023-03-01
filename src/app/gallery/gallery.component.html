@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <h1 class="title" data-cy="title">Gallery</h1>
+  <main class="gallery" data-cy="gallery">
+    <ng-container *ngFor="let image of gallery">
+      <p-card [header]="image.title" data-cy="card">
+        <p-image alt="Image" width="250" data-cy="image" [preview]="true" [src]="image.url"></p-image>
+      </p-card>
+    </ng-container>
+  </main>
+  <div class="pagination">
+    <p-paginator
+      data-cy="pagination"
+      [rows]="12"
+      [totalRecords]="120"
+      (onPageChange)="onPageChange($event)"
+    ></p-paginator>
+  </div>
+</div>

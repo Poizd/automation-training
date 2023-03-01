@@ -1,0 +1,62 @@
+<div class="wrapper">
+  <h1 class="title" data-cy="title">Todo list</h1>
+
+  <div class="input-cnt">
+    <input pInputText type="text" class="todo-text" data-cy="todo-text" [(ngModel)]="todoText" />
+    <p-button icon="pi pi-plus" label="Add" data-cy="add-btn" (click)="add()"></p-button>
+  </div>
+
+  <div class="filters">
+    <p-button label="All" styleClass="p-button-sm" data-cy="show-all-btn" (click)="showAll()"></p-button>
+    <p-button label="Active" styleClass="p-button-sm" data-cy="show-active-btn" (click)="showActive()"></p-button>
+    <p-button label="Inactive" styleClass="p-button-sm" data-cy="show-inactive-btn" (click)="showInactive()"></p-button>
+  </div>
+
+  <div *ngFor="let item of filteredList" class="field-checkbox" data-cy="todo-item">
+    <p-checkbox inputId="binary" [binary]="true" (onChange)="done()" [(ngModel)]="item.done"></p-checkbox>
+
+    <label
+      *ngIf="!item.edit"
+      class="label"
+      data-cy="label"
+      [for]="item.id"
+      [ngClass]="{ 'line-through': isChecked(item) }"
+      >{{ item.label }}</label
+    >
+    <input
+      *ngIf="item.edit"
+      pInputText
+      type="text"
+      class="edit-text p-inputtext-sm"
+      data-cy="edit-text"
+      [(ngModel)]="item.label"
+    />
+
+    <p-button
+      *ngIf="!item.edit"
+      icon="pi pi-pencil"
+      class="edit-btn"
+      styleClass="p-button-sm"
+      data-cy="edit-btn"
+      [disabled]="isChecked(item)"
+      (click)="edit(item)"
+    ></p-button>
+
+    <p-button
+      *ngIf="item.edit"
+      icon="pi pi-save"
+      class="save-btn"
+      styleClass="p-button-sm"
+      data-cy="save-btn"
+      (click)="save(item)"
+    ></p-button>
+
+    <p-button
+      icon="pi pi-trash"
+      class="delete-btn"
+      styleClass="p-button-sm p-button-danger"
+      data-cy="delete-btn"
+      (click)="delete(item)"
+    ></p-button>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+.wrapper {
+  margin: 0 auto;
+  width: 400px;
+
+  .title {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .input-cnt {
+    margin: 20px 0;
+    display: flex;
+
+    .todo-text {
+      flex: 1;
+      margin-right: 10px;
+    }
+  }
+
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+
+  .field-checkbox {
+    display: flex;
+
+    .label,
+    .edit-text {
+      flex: 1;
+      margin: 0 10px;
+    }
+
+    .edit-btn,
+    .save-btn {
+      margin: 0 10px;
+    }
+  }
+}

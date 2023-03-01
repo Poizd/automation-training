@@ -1,0 +1,24 @@
+<div class="wrapper">
+  <h1 class="title" data-cy="title">Post</h1>
+  <main *ngIf="post">
+    <div class="post-cnt">
+      <p-button label="Back" icon="pi pi-chevron-left" data-cy="navigate-back-btn" (click)="navigateBack()"></p-button>
+      <h2 class="post-title" data-cy="post-title">{{ post.title }}</h2>
+      <div class="post-body" data-cy="post-body">
+        {{ post.body }}
+      </div>
+      <div *ngIf="comments.length" class="post-comments">
+        <div *ngFor="let comment of comments" class="comment" data-cy="comment">
+          <dl>
+            <dt>Name</dt>
+            <dd data-cy="comment-name">{{ comment.name }}</dd>
+            <dt>Email</dt>
+            <dd data-cy="comment-email">{{ comment.email }}</dd>
+            <dt>Body</dt>
+            <dd data-cy="comment-body">{{ comment.body }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

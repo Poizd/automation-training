@@ -1,0 +1,11 @@
+::ng-deep {
+  p-menubar ul li {
+    margin: 0 10px;
+  }
+  .p-menuitem-link {
+    border: 1px solid transparent;
+  }
+  .p-menuitem-link-active {
+    border: 1px solid #ccc;
+  }
+}
