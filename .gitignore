@@ -1,0 +1,61 @@
+node_modules
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/dist-lib
+/tmp
+/out-tsc
+/bazel-out
+
+# dependencies
+/node_modules
+/bower_components
+/src/environments/git-version.ts
+
+# IDEs and editors
+/.idea
+/.vscode
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+.angular
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+yarn-error.log
+npm-debug.log
+testem.log
+/typings
+documentation.json
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# Playwright
+/playwright/test-results/
+/playwright/html-results/
+/playwright/playwright-report/
+/playwright/allure-report/
+/playwright/allure-results/
+/playwright/.cache/
+
+#System Files
+.DS_Store
+Thumbs.db
+/node-server/node_modules/
