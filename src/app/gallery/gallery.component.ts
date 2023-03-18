@@ -18,7 +18,7 @@ export class GalleryComponent implements OnInit {
   itemsPerPage = 12;
   gallery!: Image[];
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.loadGallery(0, this.itemsPerPage);
@@ -29,7 +29,7 @@ export class GalleryComponent implements OnInit {
   }
 
   private loadGallery(start: number, limit: number): void {
-    const URL = `//jsonplaceholder.typicode.com/photos?_start=${start}&_limit=${limit}`;
+    const URL = `/api/photos?_start=${start}&_limit=${limit}`;
     this.httpClient.get<Image[]>(URL).subscribe((gallery) => {
       this.gallery = gallery;
     });

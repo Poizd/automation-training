@@ -26,7 +26,7 @@ export class PostsComponent implements OnInit {
   isShownCreateModal = false;
   isShownEditModal = false;
 
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.loadPosts(0, this.itemsPerPage);

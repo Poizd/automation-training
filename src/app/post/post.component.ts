@@ -27,7 +27,7 @@ export class PostComponent implements OnInit {
   post!: Post;
   comments!: Comment[];
 
-  constructor(private httpClient: HttpClient, private activatedRoute: ActivatedRoute, private router: Router) {}
+  constructor(private httpClient: HttpClient, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     const { id } = this.activatedRoute.snapshot.params || {};
@@ -55,6 +55,6 @@ export class PostComponent implements OnInit {
   }
 
   private getBaseUrl(): string {
-    return '//jsonplaceholder.typicode.com';
+    return '//api';
   }
 }
